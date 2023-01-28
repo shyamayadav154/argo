@@ -1,0 +1,31 @@
+# give yml file to deploy argocd
+apiVersion: argoproj.io/v1beta1
+kind: Application
+metadata:
+  name: mevvit2
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+   - argocd-image-updater.argoproj.io/image-list: mevvit-frontend=shyamayadav154/mevfinal-main:latest
+   - argocd-image-updater.argoproj.io/
+   - argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
+
+spec:
+  destination:
+    namespace: mevvit2
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: k8
+    repoURL: https://github.com/shyamayadav154/argo.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+    autoImageTag:
+      latest: true  
+          
