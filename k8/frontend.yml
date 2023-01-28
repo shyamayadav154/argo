@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: mevvit-frontend
-          image: shyamayadav154/mevfinal-main
+          image: shyamayadav154/mevfinal:dev
           ports:
             - containerPort: 3000
 
