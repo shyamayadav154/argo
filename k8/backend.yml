@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: mevvit-backend
-        image: shyamayadav154/backend:dev
+        image: shyamayadav154/mrbackend:dev
         ports:
         - containerPort: 8000
        
